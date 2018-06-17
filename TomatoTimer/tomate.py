@@ -9,6 +9,9 @@ def tm():
     tm = winsound.PlaySound("time",winsound.SND_FILENAME)
 def mi():
     mi = winsound.PlaySound("minus",winsound.SND_FILENAME)
+def ta():
+    mi = winsound.PlaySound("tadaa",winsound.SND_FILENAME)
+
 
 
 def tempo(m):
@@ -44,3 +47,5 @@ while(True):
     bg()
     tempo(tom)
     tm()
+    tempo(pausa)
+    ta()
