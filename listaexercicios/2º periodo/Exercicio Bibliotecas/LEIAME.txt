@@ -1,0 +1,5 @@
+Comandos para compilar exemplos:
+	Operações:
+		gcc main-operacoes.c ../operacoes/operacoes.c
+	Series:
+		gcc main-series.c ../series/series.c ../operacoes/operacoes.c
