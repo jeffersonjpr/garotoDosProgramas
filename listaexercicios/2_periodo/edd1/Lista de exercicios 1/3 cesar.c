@@ -15,10 +15,12 @@ int main(){
     char pano[1024];
     printf("Digite uma palavra :");
     fflush(stdin);
-    gets(pano);
+    fgets(pano,1024,stdin);
     printf("%s\n",pano);
-    printf("Encripitado : \n");
+    printf("Encripitado: ");
     for(int i = 0;i < strlen(pano);i++){
         printf("%c",encripta(pano[i]));
     }
+    printf("\n\n");
+
 }
