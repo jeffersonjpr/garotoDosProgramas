@@ -10,19 +10,19 @@ void concat(char conc[],char conc2[]){
 int lent (char lent2[]){
     return strlen(lent2);
 }
-/*
+
 void duas(char a[],char b[]){
-    printf("Digite a primeira string\n");
+    printf("Digite a primeira string");
     fgets(a,200,stdin);
-    printf("Digite a segunda string\n");
+    printf("Digite a segunda string");
     fgets(b,100,stdin);
 }
 
 void uma(char a[]){
-    printf("Digite a string\n");
+    printf("Digite a string");
     fgets(a,200,stdin);
 }
-*/
+
 int main(){
     //__fpurge(stdin);
     int na = 1;
@@ -32,8 +32,8 @@ int main(){
     while(na != 0){
         printf("1 para comparar,2 para concatenar,3 para calcular tamanho e 0 para sair:");
         scanf("%i",&na);
-        /*
-        switch(n){
+
+        switch(na){
             case 1:
                     duas(a,b);
                     printf("%i\n",compara(a,b));
@@ -49,7 +49,7 @@ int main(){
                     break;
 
         }
-        */
+
 
     }
 }
