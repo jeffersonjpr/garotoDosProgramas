@@ -18,7 +18,7 @@ int main(){
     vetor = malloc(sizeof(double) * size);
     if(vetor == NULL) return 0;
     for(i = 0;i < size;i++){
-        scanf("%f",vetor + i);
+        scanf("%lf",vetor + i);
     }
     for(i = 0;i < size;i++){
         printf("%f\n",*(vetor + i));
