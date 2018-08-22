@@ -11,28 +11,28 @@ int lent (char lent2[]){
     return strlen(lent2);
 }
 
-void duas(char a[],char b[]){
-    printf("Digite a primeira string");
+void duas(char a[200],char b[100]){
+    //printf("Digite a primeira string\n");
     fgets(a,200,stdin);
-    printf("Digite a segunda string");
+    a[strlen(a) -2 ] = '\0';
+    //printf("Digite a segunda string\n");
     fgets(b,100,stdin);
+    b[strlen(b) - 2] = '\0';
 }
 
-void uma(char a[]){
-    printf("Digite a string");
+void uma(char a[200]){
+    //printf("Digite a string\n");
     fgets(a,200,stdin);
+    a[strlen(a) - 1] = '\0';
+
 }
 
 int main(){
-    //__fpurge(stdin);
     int na = 1;
-    char a[100],b[100];
-    printf("seu creyxxon\n");
-    fflush(stdin);
+    char a[200],b[100];
     while(na != 0){
         printf("1 para comparar,2 para concatenar,3 para calcular tamanho e 0 para sair:");
-        scanf("%i",&na);
-
+        scanf(" %i ",&na);
         switch(na){
             case 1:
                     duas(a,b);
@@ -41,7 +41,7 @@ int main(){
             case 2:
                     duas(a,b);
                     concat(a,b);
-                    printf("%s\n",a);
+                    printf("\n\n\n%s\n",a);
                     break;
             case 3:
                     uma(a);
