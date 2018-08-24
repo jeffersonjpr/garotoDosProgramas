@@ -16,9 +16,9 @@ int main(){
 			maior = atual;
 		}
 	}
-	printf("O maior produto é %i que começa na posicao %i \"",maior,posm);
-	for(int i = posm;i < posm+5;i++){
-		printf("%c",str[i]);
-	}
-	printf("\"\n");
+	// printf("O maior produto é %i que começa na posicao %i \"",maior,posm);
+	// for(int i = posm;i < posm+5;i++){
+	// 	printf("%c",*(str + i));
+	// }
+	printf("%i\n",maior);
 }
