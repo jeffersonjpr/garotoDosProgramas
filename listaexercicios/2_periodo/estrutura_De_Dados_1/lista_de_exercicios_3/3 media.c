@@ -10,7 +10,7 @@ typedef struct aln{
 
 void maiornota(brick *curso,int n){
     int id[n],i,cont;
-    float nota = -1;
+    float nota = -1.1;
     for(i = 0;i < n;i++){
         if((curso + i) -> nota[0] > nota){
             cont = 1;
@@ -23,20 +23,21 @@ void maiornota(brick *curso,int n){
     }
 
     if(cont == 1){
-        printf("%s foi o aluno com a maior nota na primeira prova\nNota:%.3f\n",(curso + id[0]) -> nome,nota);
+        printf("%s foi o aluno com a maior nota na primeira prova\nNota:%.3f\n\n",(curso + id[0]) -> nome,nota);
     }
     else{
         printf("Maior nota na primeira prova: %.3f\nAlunos com a mesma nota:\n",nota);
         for(i = 0; i < cont; i++){
             printf("%s\n",(curso + id[i]) -> nome);
         }
+        printf("\n");
     }
 
 }
 
 void maiormedia(brick *curso,int n){
     int id[n],i,cont;
-    float nota = -1;
+    float nota = -1.1;
     for(i = 0;i < n;i++){
         if((curso + i) -> nota[3] > nota){
             cont = 1;
@@ -49,20 +50,21 @@ void maiormedia(brick *curso,int n){
     }
 
     if(cont == 1){
-        printf("%s foi o aluno com a maior media \nMedia:%.3f\n",(curso + id[0]) -> nome,nota);
+        printf("%s foi o aluno com a maior media \nMedia:%.3f\n\n",(curso + id[0]) -> nome,nota);
     }
     else{
-        printf("Maior media: %.3f\n Alunos com a mesma media final:\n",nota);
+        printf("Maior media: %.3f\nAlunos com a mesma media final:\n",nota);
         for(i = 0; i < cont; i++){
             printf("%s\n",(curso + id[i]) -> nome);
         }
+        printf("\n");
     }
 
 }
 
 void menormedia(brick *curso,int n){
     int id[n],i,cont;
-    float nota = -1;
+    float nota = 11.1;
     for(i = 0;i < n;i++){
         if((curso + i) -> nota[3] < nota){
             cont = 1;
@@ -75,13 +77,14 @@ void menormedia(brick *curso,int n){
     }
 
     if(cont == 1){
-        printf("%s foi o aluno com a menor media \nMedia:%.3f\n",(curso + id[0]) -> nome,nota);
+        printf("%s foi o aluno com a menor media \nMedia:%.3f\n\n",(curso + id[0]) -> nome,nota);
     }
     else{
         printf("Menor media: %.3f\n Alunos com a mesma media final:\n",nota);
         for(i = 0; i < cont; i++){
             printf("%s\n",(curso + id[i]) -> nome);
         }
+        printf("\n");
     }
 
 }
@@ -106,13 +109,13 @@ int main(){
         strtok((curso + i) -> nome,"\n");
         for(j = 0;j < 3;j++){
             printf("Digite a %i nota: ",j+1);
-            scanf("%i",&(curso + i) -> nota[j]);
+            scanf("%f",&(curso + i) -> nota[j]);
             aux += (curso + i) -> nota[j];
         }
         //somando e calculando a media
-        (curso + i) -> nota[3] = aux / 3;
+        (curso + i) -> nota[3] = (aux / 3);
     }
-
+    system("clear");
     maiornota(curso,n);
     maiormedia(curso,n);
     menormedia(curso,n);
@@ -120,10 +123,10 @@ int main(){
     printf("Resultado final:\n");
     for(i = 0;i<n;i++){
         if((curso + i) -> nota[3] >= 6.0){
-            printf("%35s Media final:%.3f Aprovado\n",(curso + i) -> nome,(curso + i) -> nota[3]);
+            printf("%35s Matricula:%i Media final:%.3f Aprovado\n",(curso + i) -> nome,(curso + i) -> matricula,(curso + i) -> nota[3]);
         }
         else{
-            printf("%35s Media final:%.3f Reprovado\n",(curso + i) -> nome,(curso + i) -> nota[3]);
+            printf("%35s Matricula:%i Media final:%.3f Reprovado\n",(curso + i) -> nome,(curso + i) -> matricula,(curso + i) -> nota[3]);
         }
 
     }
