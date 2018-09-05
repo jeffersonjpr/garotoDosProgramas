@@ -20,7 +20,7 @@ int main(){
         printf("Digite o coeficiente do %i termo: ",i+1);
         scanf("%i",&(velha +i) -> coef);
         printf("Digite a icognita do %i termo: ",i+1);
-        scanf("%c",&(velha +i) -> icg);
+        scanf(" %c",&(velha +i) -> icg);
         if((velha +i) -> icg < 97) (velha +i) -> icg -= 32;
         printf("Digite o expoente do %i termo: ",i+1);
         scanf("%i",&(velha +i) -> expt);
@@ -51,21 +51,21 @@ int main(){
 
 
     for(i = 0;i<n;i++){
-        printf("      %i ",(velha +i) -> expt)
+        printf("   %i ",(velha +i) -> expt);
     }
     printf("\n");
     for(i = 0;i<n;i++){
-        printf("%i%c",(velha +i) -> coef,(velha +i) -> icg)
+        printf("%i%c",(velha +i) -> coef,(velha +i) -> icg);
         if(i < n-1) printf(" + ");
     }
     printf("\n");
 
     for(i = 0;i<nn;i++){
-        printf("      %i ",(nova +i) -> expt)
+        printf("   %i ",(nova +i) -> expt);
     }
     printf("\n");
     for(i = 0;i<nn;i++){
-        printf("%i%c",(nova +i) -> coef,(nova +i) -> icg)
+        printf("%i%c",(nova +i) -> coef,(nova +i) -> icg);
         if(i < nn-1) printf(" + ");
     }
     printf("\n");
