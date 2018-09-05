@@ -8,7 +8,7 @@ typedef struct coe{
 }poli;
 
 int main(){
-    int n,nn = 0,i,j=0;
+    int n,nn = 1,i,j=0;
     // n tamanho do vetor original, nn tamanho do vetor simplificado
     poli *velha,*nova;
     printf("Digite a quantidade de termos : ");
@@ -21,7 +21,7 @@ int main(){
         scanf("%i",&(velha +i) -> coef);
         printf("Digite a icognita do %i termo: ",i+1);
         scanf(" %c",&(velha +i) -> icg);
-        if((velha +i) -> icg < 97) (velha +i) -> icg -= 32;
+        if((velha +i) -> icg < 97) (velha +i) -> icg += 32;
         printf("Digite o expoente do %i termo: ",i+1);
         scanf("%i",&(velha +i) -> expt);
     }
@@ -33,42 +33,35 @@ int main(){
     nova -> icg = velha -> icg;
 
     for(i = 1;i <n;i++){
-        if((nova + nn) -> icg == (velha + i) -> icg){
-            if((nova + nn) -> expt == (velha + i) -> expt){
-                nova -> coef += velha -> coef;
+        j = 0;
+        if((nova + nn - 1) -> icg == (velha + i) -> icg){
+            if((nova + nn - 1) -> expt == (velha + i) -> expt){
+                (nova + nn - 1) -> coef += velha -> coef;
             }
             else j = 1;
         }
         else j = 1;
 
         if(j == 1){
-            nova = (poli*) realloc(nova,sizeof(poli) * ++nn + 1);
-            (nova + nn) -> coef = (velha + i) -> coef;
-            (nova + nn) -> expt = (velha + i) -> expt;
-            (nova + nn) -> icg = (velha + i) -> icg;
+            ++nn;
+            nova = (poli*)realloc(nova,sizeof(poli) * nn);
+            (nova + nn - 1) -> coef = (velha + i) -> coef;
+            (nova + nn - 1) -> expt = (velha + i) -> expt;
+            (nova + nn - 1) -> icg = (velha + i) -> icg;
         }
     }
 
-
+    printf("\n\nEquacao original:\n");
     for(i = 0;i<n;i++){
-        printf("   %i ",(velha +i) -> expt);
-    }
-    printf("\n");
-    for(i = 0;i<n;i++){
-        printf("%i%c",(velha +i) -> coef,(velha +i) -> icg);
+        printf("%i%c^%i",(velha +i) -> coef,(velha +i) -> icg,(velha +i) -> expt);
         if(i < n-1) printf(" + ");
     }
-    printf("\n");
-
+    printf(" = 0\n");
+    printf("\nEquacao simplificada:\n");
     for(i = 0;i<nn;i++){
-        printf("   %i ",(nova +i) -> expt);
-    }
-    printf("\n");
-    for(i = 0;i<nn;i++){
-        printf("%i%c",(nova +i) -> coef,(nova +i) -> icg);
+        printf("%i%c^%i",(nova +i) -> coef,(nova +i) -> icg,(nova +i) -> expt);
         if(i < nn-1) printf(" + ");
     }
-    printf("\n");
-
+    printf(" = 0\n\n");
 
 }
