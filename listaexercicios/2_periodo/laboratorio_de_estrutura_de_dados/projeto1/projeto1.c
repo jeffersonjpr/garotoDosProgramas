@@ -34,3 +34,20 @@ void sorteia_valores(int *sorteio, int n){
 		}
 	}
 }
+
+void compara_senha (int *senha, int *senhaus, int *resp1, int *resp2,int n){
+	int i,j;
+	*resp1 = 0;
+	*resp2 = 0;
+	for(i = 0; i<n; i++){
+		for(j = 0; j < n;j++){
+			if(senha[i] == senhaus[j]) *resp2++;
+		}
+	}
+
+	for(i = 0; i < n; i++){
+		if(senha[i] == senhaus[i]) *resp1++;
+	}
+
+	*resp2 -= *resp1;
+}
