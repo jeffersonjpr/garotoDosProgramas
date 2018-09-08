@@ -10,12 +10,18 @@ typedef struct placar{
 }jogo;
 
 void ler_senha(int *aposta,int n){
-	int i,x=0;
+	int i,j,x=0;
 	for(i = 0; i<n; i++){
-		while(x == 0){
+		while(x <= 0 || x > 9){
 			scanf("%i",&x);
 		}
-		aposta[i] = x;
+		for(j = 0; j < i; j++){
+			if(aposta[i] == aposta[j]){
+				x = 0;
+				i--;
+			}
+		}
+		if(x) aposta[i] = x;
 		x = 0
 	}
 }
@@ -50,4 +56,12 @@ void compara_senha (int *senha, int *senhaus, int *resp1, int *resp2,int n){
 	}
 
 	*resp2 -= *resp1;
+}
+
+
+int main(){
+	int *a,*b,n = 5;
+	a = (int*)malloc(sizeof(int) * n);
+	b = (int*)malloc(sizeof(int) * n);
+	
 }
