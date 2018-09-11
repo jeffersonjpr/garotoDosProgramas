@@ -100,6 +100,15 @@ int joguinho(int n,char chave){
 	if(aux == NULL) return 0;
 
 	sorteia_valores(senha,n);
+	// para o teste
+	if(chave){
+		printf("Senha para teste: ");
+		for(i = 0; i < n; i++){
+			printf("%i",*(senha + i));
+		}
+		printf("\n");
+	}
+	// para o teste
 	game = (jogo*)malloc(sizeof(jogo));
 	if(game == NULL) return 0;
 
@@ -125,12 +134,12 @@ int joguinho(int n,char chave){
 		if(chave){
 			printf("Senha para teste: ");
 			for(i = 0; i < n; i++){
-				printf("%i",*(senhaus + i));
+				printf("%i",*(senha + i));
 			}
 			printf("\n");
 		}
 		// para o teste
-		
+
 		if((game + tenta) -> resp1 == n){
 			breakfree(game,tenta,n);
 			printf("Voce acertou em %i tentativas\n",tenta + 1);
@@ -159,13 +168,13 @@ int main(){
 			n = 0;
 		}
 		if(n == 2){
-			n = 5;
+			n = 4;
 			x = joguinho(n,0);
 			if(!x) return 0;
 			x = 0;
 		}
 		if(n == 3){
-			n = 5;
+			n = 4;
 			x = joguinho(n,1);
 			if(!x) return 0;
 			x = 0;
