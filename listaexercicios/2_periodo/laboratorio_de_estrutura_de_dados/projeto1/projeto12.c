@@ -75,7 +75,7 @@ void interface(jogo *game,int tenta, int n){
 	for(i = 0; i < tenta; i++){
 		printf("%i ",(game + i) -> tent);
 		for(j = 0; j < n; j++){
-			printf("%i",*((game + i) -> num + j));
+			printf("%i",*(game + i) -> num + j);
 		}
 		printf(" %i %i\n",(game +i) -> resp1,(game + i) -> resp2);
 	}
@@ -109,13 +109,9 @@ int joguinho(int n){
 		(game + tenta) -> tent = tenta + 1;
 
 		ler_senha(aux,n);
-		for(i = 0; i< n ; i++){
-			printf("%i ",aux[i]);
-		}
-		printf("\n" );
 		//problema com struct nao faço ideia
 		for(i = 0; i < n; i++){
-			*((game + tenta) -> num + i) = aux[i];
+			*(game + tenta) -> num + i = aux[i];
 		}
 
 		compara_senha(senha,(game + tenta) -> num,&(game + tenta) -> resp1,&(game + tenta) -> resp2,n);
