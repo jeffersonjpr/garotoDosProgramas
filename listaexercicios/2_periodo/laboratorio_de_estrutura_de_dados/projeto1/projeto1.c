@@ -67,7 +67,7 @@ void compara_senha (int *senha, int *senhaus, int *resp1, int *resp2,int n){
 	}
 
 	*resp2 -= *resp1;
-}S
+}
 //interface do jogo
 void interface(jogo *game,int tenta, int n){
 	int i,j;
@@ -119,9 +119,18 @@ int joguinho(int n,char chave){
 		}
 
 		compara_senha(senha,(game + tenta) -> num,&(game + tenta) -> resp1,&(game + tenta) -> resp2,n);
+
 		interface(game,tenta + 1,n);
+		// para o teste
 		if(chave){
-			printf("Senha para teste: ");}
+			printf("Senha para teste: ");
+			for(i = 0; i < n; i++){
+				printf("%i",*(senhaus + i));
+			}
+			printf("\n");
+		}
+		// para o teste
+		
 		if((game + tenta) -> resp1 == n){
 			breakfree(game,tenta,n);
 			printf("Voce acertou em %i tentativas\n",tenta + 1);
