@@ -81,12 +81,13 @@ void interface(jogo *game,int tenta, int n){
 	}
 }
 //desalocação
-void breakfree(jogo *game,int tenta, int n){
+jogo * breakfree(jogo *game,int tenta, int n){
 	int i;
 	for(i = 0; i < tenta; i++){
 		free((game + i) -> num);
 	}
 	free(game);
+	return NULL;
 }
 
 //jogo
@@ -141,7 +142,7 @@ int joguinho(int n,char chave){
 		// para o teste
 
 		if((game + tenta) -> resp1 == n){
-			breakfree(game,tenta,n);
+			game = breakfree(game,tenta,n);
 			printf("Voce acertou em %i tentativas\n",tenta + 1);
 			break;
 		}
