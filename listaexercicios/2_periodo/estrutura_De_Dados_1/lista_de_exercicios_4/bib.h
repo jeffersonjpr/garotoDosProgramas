@@ -1,18 +1,14 @@
-/*
-* Faça uma biblioteca para as definições
-* abaixo especificadas.
-
 typedef int TipoChave;
 typedef int TipoValor;
+
 struct TipoListaSimples
 {
- TipoChave chave;
- TipoValor valorQualquer;
- struct TipoListaSimples *prox;
+	TipoChave chave;
+	TipoValor valorQualquer;
+	struct TipoListaSimples *prox;
 };
 typedef struct TipoListaSimples TipoListaSimples;
 
-*/
 TipoListaSimples *insereInicioListaSimples(TipoListaSimples **prim,TipoChave chave, TipoValor valor);
 void atualizaValor(TipoListaSimples *prim, TipoValor novoValor);
 void removePrimeiroNo(TipoListaSimples **prim);
