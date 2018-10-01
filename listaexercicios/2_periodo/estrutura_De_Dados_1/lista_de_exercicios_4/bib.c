@@ -18,7 +18,7 @@ TipoListaSimples * alocano(int chave,int valor){
 	aux = (TipoListaSimples*)malloc(sizeof(TipoListaSimples));
 	//verifica se foi possivel alocar
 	if(aux == NULL){
-		printf("Error 4242 Memoria ram insuficiente.\n");
+		// printf("Error 4242 Memoria ram insuficiente.\n");
 		return NULL;
 	}
 	aux -> chave = chave;
@@ -43,7 +43,7 @@ TipoListaSimples *insereInicioListaSimples(TipoListaSimples **prim,TipoChave cha
 		//se nao foi possivel ele "devolve" o conteudo de aux
 		//pra *prim, para que nao haja vazamento de memoria
 		if(*prim == NULL){
-			printf("Error 4242 Memoria ram insuficiente.\n");
+			// printf("Error 4242 Memoria ram insuficiente.\n");
 			*prim = aux;
 			return *prim;
 		}
@@ -55,7 +55,7 @@ TipoListaSimples *insereInicioListaSimples(TipoListaSimples **prim,TipoChave cha
 
 void atualizaValor(TipoListaSimples *prim, TipoValor novoValor){
 	if(prim == NULL){
-		printf("Lista vazia.\n");
+		// printf("Lista vazia.\n");
 		return;
 	}
 	prim -> valorQualquer = novoValor;
@@ -64,7 +64,7 @@ void atualizaValor(TipoListaSimples *prim, TipoValor novoValor){
 void removePrimeiroNo(TipoListaSimples **prim){
 	TipoListaSimples *aux;
 	if(*prim == NULL){
-		printf("Lista vazia\n");
+		// printf("Lista vazia\n");
 		return;
 	}
 	aux = (*prim) -> prox;
@@ -75,11 +75,11 @@ void removePrimeiroNo(TipoListaSimples **prim){
 
 TipoListaSimples *pesquisaNo(TipoListaSimples *prim, TipoChave chave){
 	if(prim == NULL){
-		printf("Chave nao encontrada na lista\n");
+		// printf("Chave nao encontrada na lista\n");
 		return NULL;
 	}
 	if(prim -> chave == chave){
-		printf("Chave encontrada!\n");
+		// printf("Chave encontrada!\n");
 		return prim;
 	}
 	pesquisaNo(prim -> prox,chave);
@@ -90,7 +90,7 @@ void inserefimcerto(TipoListaSimples **prim,TipoChave chave, TipoValor valor){
 	if(*prim == NULL){
 		*prim = alocano(chave,valor);
 		if(*prim == NULL){
-			printf("Error 4242 Memoria ram insuficiente.\n");
+			// printf("Error 4242 Memoria ram insuficiente.\n");
 			return;
 		}
 		return;
@@ -104,7 +104,7 @@ TipoListaSimples * insereFimListaSimples(TipoListaSimples **prim,TipoChave chave
 
 void removeUltimoNo(TipoListaSimples **prim){
 	if(*prim == NULL){
-		printf("Lista vazia.\n");
+		// printf("Lista vazia.\n");
 		return;
 	}
 	if((*prim)->prox == NULL){
@@ -116,12 +116,12 @@ void removeUltimoNo(TipoListaSimples **prim){
 }
 void removeNo(TipoListaSimples **prim, TipoChave chave){
 	if(*prim == NULL){
-		printf("Valor nao encontrado\n");
+		// printf("Valor nao encontrado\n");
 		return;
 	}
 	if((*prim)->chave == chave){
 		removePrimeiroNo(&(*prim));
-		printf("No removido\n");
+		// printf("No removido\n");
 		return;
 	}
 	removeNo(&(*prim)->prox,chave);
@@ -145,17 +145,89 @@ TipoListaSimples *copiaListas(TipoListaSimples *prim){
 	copiaListasAux(&aux,prim);
 	return aux;
 }
+
 int contaconta(TipoListaSimples *aux,int n){
+	if(aux == NULL) return 0;
 	if(aux -> prox == NULL) return n;
-	contaconta(aux,n+1);
+	contaconta(aux -> prox,n+1);
 }
+
 TipoListaSimples *intersecaoListas(TipoListaSimples *prim1,TipoListaSimples *prim2){
-	TipoListaSimples *aux,*aux1,*aux2;
-	if(prim1 == null)
-	int n;
+	TipoListaSimples *aux1,*aux2,*aux3 = NULL;
+	int n,i;
+	if(prim1 == NULL || prim2 == NULL) return NULL;
+	n = contaconta(prim1,1);
+	aux1 = prim1;
+	aux2 = prim2;
+	for(i = 0; i< n; i++){
+		aux2 = pesquisaNo(prim2,aux1 -> chave);
+		if(aux2 != NULL){
+			//if(aux2 -> valorQualquer == aux1 -> valorQualquer)
+			//intersecao de um conjunto de elementos com duas variaveis, levando em consideracao apenas uma ?
+				aux3 = insereFimListaSimples(&aux3,aux1 -> chave,aux1 -> valorQualquer);
+				removeNo(&aux2,aux1->chave);
+		}
+		aux1 = aux1 -> prox;
+	}
+	return aux3;
 
 }
-// void insereRemove(TipoListaSimples **primLista1, TipoListaSimples **primLista2);
-// void transplantaNo(TipoListaSimples **primLista1, TipoListaSimples **primLista2);
-// int contaNo(TipoListaSimples **primLista1);
-// int alturaNo(TipoListaSimples **primLista1, TipoChave chave);
+void insereRemove(TipoListaSimples **primLista1,TipoListaSimples **primLista2){
+	TipoListaSimples *aux;
+	int auxi,auxj;
+	if(*primLista2 == NULL) return;
+	aux = *primLista2;
+	while(aux -> prox != NULL){ //loop interessante, devia ter feito na funcao anterior
+		aux = aux -> prox;
+	}
+	auxi = aux -> chave;
+	auxj = aux -> valorQualquer;
+	removeUltimoNo(&(*primLista2));
+	insereFimListaSimples(&(*primLista1),auxi,auxj);
+
+}
+void transplantaNo(TipoListaSimples **primLista1, TipoListaSimples **primLista2){
+	TipoListaSimples *aux2, *aux1;
+	if(*primLista2 == NULL) return;
+	aux1 = *primLista1;
+	aux2 = *primLista2;
+	if(aux1 != NULL)
+		while(aux1 -> prox != NULL) aux1 = aux1 -> prox;
+	if(aux2 -> prox != NULL)
+		while(aux2 -> prox -> prox != NULL) aux2 = aux2-> prox;
+	else{
+		if(aux1 == NULL){
+			*primLista1 = *primLista2;
+			*primLista2 = NULL;
+			return;
+		}
+		else{
+			aux1 -> prox = *primLista2;
+			*primLista2 = NULL;
+			return;
+		}
+	}
+
+	if(aux1 == NULL){
+		*primLista1 = aux2 -> prox;
+		aux2 -> prox = NULL;
+		return;
+	}
+	else{
+		aux1 -> prox = aux2 -> prox;
+		aux2 -> prox = NULL;
+		return;
+	}
+
+}
+int contaNo(TipoListaSimples **primLista1){
+	if(*primLista1 == NULL) return 0;
+	if((*primLista1) -> prox == NULL) return 1;
+	return contaNo(&(*primLista1)->prox) + 1;
+}
+
+int alturaNo(TipoListaSimples **primLista1, TipoChave chave){
+	if(*primLista1 == NULL) return 0;
+	if((*primLista1) -> chave == chave) return 1;
+	return alturaNo(&(*primLista1) -> prox,chave) + 1;
+}

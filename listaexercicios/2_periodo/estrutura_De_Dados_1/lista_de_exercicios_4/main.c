@@ -33,6 +33,12 @@ void menu(){
 	printf("(7) para deletar um no, dado uma chave, na lista selecionada.\n");
 	printf("(8) para deletar a lista selecionada.\n");
 	printf("(9) para copiar a lista selecionada(evite usar a 3!!).\n");
+	printf("(10) para fazer a intersecao das listas 1 e 2.(destino lista 3)\n");
+	printf("(11) para remover o ultimo no da lista selecionada e adiciona-lo a lista 3\n");
+	printf("(12) para tlansplantar o ultimo no da lista selecionada e adiciona-lo ao final da lista 3\n");
+	printf("(13) para contar o numero de nos da lista selecionada.\n");
+	printf("(14) para calcula a altura de um no dado uma chave(a chave DEVE estar contida no no).\n");
+	printf("(42) para finalizar o programa.\n");
 
 }
 
@@ -67,7 +73,7 @@ int main(){
 		menu();
 		printf("Digite a opcao:");
 		scanf("%i",&a);
-		if(a >= 0){
+		if(a >= 0 && a != 10){
 			printf("Digite a lista desejada(1,2,3):");
 			scanf("%i",&b);
 		}
@@ -138,6 +144,7 @@ int main(){
 				if(b == 1) removeNo(&no1,x);
 				else if(b == 2) removeNo(&no2,x);
 				else removeNo(&no3,x);
+				printf("Se possivel, removido.\n");
 				break;
 
 			case 8:
@@ -155,8 +162,39 @@ int main(){
 				printf("Lista selecionada copiada para lista 3\n");
 				break;
 
+			case 10:
+				liberaNos(&no3);
+				no3 = intersecaoListas(no1,no2);
+				printf("Intersecao pronta.\n");
+				break;
+
+			case 11:
+				if(b == 1) insereRemove(&no3,&no1);
+				else if(b == 2) insereRemove(&no3,&no2);
+				else insereRemove(&no3,&no3);
+				printf("Valor removido da lista selecionada e adicionado na lista 3\n");
+				break;
+
+			case 12:
+				if(b == 1) transplantaNo(&no3,&no1);
+				else if(b == 2) transplantaNo(&no3,&no2);
+				printf("Ultimo no transplantado na lista 3\n");
+				break;
+
+			case 13:
+				if(b == 1) printf("A lista 1 tem %i nos\n",contaNo(&no1));
+				else if(b == 2) printf("A lista 2 tem %i nos\n",contaNo(&no2));
+				else printf("A lista 3 tem %i nos\n",contaNo(&no3));
+				break;
+
+			case 14:
+				x = lerv(1);
+				if(b == 1) printf("Altura:%i\n",alturaNo(&no1,x));
+				else if(b == 2) printf("Altura:%i\n",alturaNo(&no2,x));
+				else printf("Altura:%i\n",alturaNo(&no3,x));
+				break;
 			default:
 				break;
 		}
-	}while(a < 100);
+	}while(a < 16);
 }

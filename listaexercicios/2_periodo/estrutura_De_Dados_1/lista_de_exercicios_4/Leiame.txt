@@ -1,13 +1,12 @@
 A respeito do main.c: criado para testes, se nao for necessario
-seu uso, apenas ignore-a;
+seu uso, apenas ignore-o;
 
 Compilaçao:
-	ambas devem estar na mesma pasta
-
+	ambos arquivos devem estar na mesma pasta
+	gcc main.c bib.c
+	
 v..importante..v
 As funçoes que involvem duas ou mais listas usam a lista3 como destino
-dos retornos, para verificar se funcionou, imprima a lista 3.
-Como a funcao de intersecao nao deixou claro se era pra levar em consideração
-as chaves ou valores, eu considerei AMBOS os valores(chave,valorQualquer).
+do retorno, para verificar se funcionou, imprima a lista 3.
 A funcao insereFimListaSimples nao tinha o valorQualquer,adicionei
 pois acredito que a professora tenha esquecido.
