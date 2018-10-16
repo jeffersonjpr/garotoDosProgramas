@@ -11,6 +11,7 @@ struct TipoListaCircular{
 TipoListaCircular *alocano(int chave, int valor, TipoListaCircular *prox){
 	TipoListaCircular *aux;
 	aux = (TipoListaCircular*)malloc(sizeof(TipoListaCircular));
+	if(aux == NULL) return prox;
 	aux -> chave = chave;
 	aux -> valorQualquer = valor;
 	aux -> prox =  prox;
@@ -24,7 +25,6 @@ TipoListaCircular *insereInicioListaCircular(TipoListaCircular **prim, TipoChave
 		return *prim;
 	}
 	(*prim) -> prox = alocano(chave,valor,(*prim) -> prox);
-	*prim = (*prim) -> prox;
 	return *prim;
 }
 
@@ -57,6 +57,7 @@ void removeNo(TipoListaCircular **prim, TipoChave chave){
 	}
 }
 
+//funçao feita para auxiliar na copiaListaPar
 void auxiliarcopia(TipoListaCircular *prim,TipoListaCircular **aux){
 	if(prim == NULL) return;
 	auxiliarcopia(prim -> prox,&(*aux));
@@ -65,6 +66,7 @@ void auxiliarcopia(TipoListaCircular *prim,TipoListaCircular **aux){
 
 TipoListaCircular *copiaListaPar(TipoListaCircular *prim){
 	TipoListaCircular *aux = prim -> prox,*resp = NULL;
+	//transformei em lista normal, pra auxiliar na recursao.
 	prim -> prox = NULL;
 	auxiliarcopia(aux,&resp);
 	prim -> prox = aux;

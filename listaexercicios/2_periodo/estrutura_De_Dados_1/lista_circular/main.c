@@ -4,7 +4,7 @@
 
 void printar(TipoListaCircular *no,TipoListaCircular *aux){
 	if(no == aux){
-		printf("[%i,%i]\n",aux -> chave,aux -> valorQualquer);
+		printf("[%i,%i].\n",aux -> chave,aux -> valorQualquer);
 		return;
 	}
 	printf("[%i,%i] ",aux -> chave,aux -> valorQualquer);
