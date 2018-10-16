@@ -10,12 +10,12 @@ struct TipoListaEncadeada{
 };
 typedef struct TipoListaEncadeada TipoListaEncadeada;
 */
-TipoListaEncadeada *alocano(TipoChave chave, TipoValor valo){
+TipoListaEncadeada *alocano(TipoChave chave, TipoValor valor){
 	TipoListaEncadeada *aux;
 	aux = (TipoListaEncadeada*)malloc(sizeof(TipoListaEncadeada));
 	if(aux == NULL) return NULL;
 	aux -> chave = chave;
-	aux -> valor = valor;
+	aux -> valorQualquer = valor;
 	aux -> prox = NULL;
 	aux -> ant = NULL;
 
@@ -55,7 +55,7 @@ void removeNo(TipoListaEncadeada **prim, TipoChave chave){
 		if(aux == NULL) break;
 	}
 	if(aux == NULL) return;
-	if(aux -> prox == aux -> ant == NULL){
+	if(aux -> prox == NULL && aux -> ant == NULL){
 		free(*prim);
 		*prim = NULL;
 	}
@@ -67,7 +67,7 @@ void removeNo(TipoListaEncadeada **prim, TipoChave chave){
 	}
 	if(aux -> prox == NULL){
 		aux = aux -> ant;
-		fre(aux -> prox);
+		free(aux -> prox);
 		aux -> prox = NULL;
 		return;
 	}
@@ -75,4 +75,18 @@ void removeNo(TipoListaEncadeada **prim, TipoChave chave){
 	aux -> ant -> prox = aux -> prox;
 	aux -> prox -> ant = aux -> ant;
 	free(aux);
+}
+
+TipoListaEncadeada *copiaLista3(TipoListaEncadeada *prim){
+	if(prim == NULL) return NULL;
+	TipoListaEncadeada *aux = NULL;
+	int i;
+	for(i = 1; 1 == 1;i++){
+		if(i % 3 == 0){
+			aux = insereFimListaEncadeada(&aux,prim -> chave,prim -> valorQualquer);
+		}
+		if(prim -> prox == NULL) break;
+		prim = prim -> prox;
+	}
+	return aux;
 }
