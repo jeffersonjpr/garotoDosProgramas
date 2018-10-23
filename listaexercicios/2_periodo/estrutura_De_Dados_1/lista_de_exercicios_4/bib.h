@@ -23,3 +23,4 @@ void insereRemove(TipoListaSimples **primLista1, TipoListaSimples **primLista2);
 void transplantaNo(TipoListaSimples **primLista1, TipoListaSimples **primLista2);
 int contaNo(TipoListaSimples **primLista1);
 int alturaNo(TipoListaSimples **primLista1, TipoChave chave);
+int profundidadeNo(TipoListaSimples **primLista1, TipoChave chave);

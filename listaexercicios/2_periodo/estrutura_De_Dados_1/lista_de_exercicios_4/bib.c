@@ -187,37 +187,25 @@ void insereRemove(TipoListaSimples **primLista1,TipoListaSimples **primLista2){
 
 }
 void transplantaNo(TipoListaSimples **primLista1, TipoListaSimples **primLista2){
-	TipoListaSimples *aux2, *aux1;
+	TipoListaSimples *aux = *primLista1,*aux2=*primLista2,*aux3;
 	if(*primLista2 == NULL) return;
-	aux1 = *primLista1;
-	aux2 = *primLista2;
-	if(aux1 != NULL)
-		while(aux1 -> prox != NULL) aux1 = aux1 -> prox;
-	if(aux2 -> prox != NULL)
-		while(aux2 -> prox -> prox != NULL) aux2 = aux2-> prox;
-	else{
-		if(aux1 == NULL){
-			*primLista1 = *primLista2;
-			*primLista2 = NULL;
-			return;
-		}
-		else{
-			aux1 -> prox = *primLista2;
-			*primLista2 = NULL;
-			return;
-		}
-	}
-
-	if(aux1 == NULL){
-		*primLista1 = aux2 -> prox;
-		aux2 -> prox = NULL;
-		return;
+	if(*primLista1 != NULL)
+		while(aux -> prox != NULL) aux = aux -> prox;
+	if(aux2 -> prox != NULL){
+		while(aux2 -> prox != NULL) aux2 = aux2 -> prox;
+		aux3 = aux2;
+		aux2 = *primLista2;
+		while(aux2 -> prox != aux3) aux2 = aux2 ->prox;
+		
 	}
 	else{
-		aux1 -> prox = aux2 -> prox;
-		aux2 -> prox = NULL;
+		aux1 -> prox = aux2;
+		aux2 = NULL;
 		return;
 	}
+	
+	aux -> prox = aux2 -> prox;
+	aux2 -> prox = NULL;
 
 }
 int contaNo(TipoListaSimples **primLista1){
@@ -227,7 +215,20 @@ int contaNo(TipoListaSimples **primLista1){
 }
 
 int alturaNo(TipoListaSimples **primLista1, TipoChave chave){
-	if(*primLista1 == NULL) return 0;
-	if((*primLista1) -> chave == chave) return 1;
-	return alturaNo(&(*primLista1) -> prox,chave) + 1;
+	TipoListaSimples *aux = *primLista1;
+	int resp = 0;
+	while(aux != NULL){
+		if(aux -> chave == chave) break;
+		aux = aux -> prox;
+	}
+	if(aux == NULL) return -1;
+	aux = *primLista1;
+	while(aux != NULL){
+		resp++;
+		if(aux-> chave == chave) return resp;
+		aux = aux -> prox;
+	}
+}
+int profundidadeNo(TipoListaSimples **primLista1, TipoChave chave){
+	TipoListaSimples *aux;
 }
