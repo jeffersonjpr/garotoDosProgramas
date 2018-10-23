@@ -81,10 +81,10 @@ int main(void) {
     printf("n = %d\n", contaNo(&lista));
 
     puts("alturaNo()");
-    printf("h = %d\n", alturaNo(&lista, 2));
+    printf("h = %d\n", alturaNo(&lista, 27));
 
     puts("profundidadeNo() //3");
-    printf("p = %d\n", profundidadeNo(&lista, 76));
+    printf("p = %d\n", profundidadeNo(&lista, 33));
     imprimeLista(lista);
 
     puts(" liberaNos()");
