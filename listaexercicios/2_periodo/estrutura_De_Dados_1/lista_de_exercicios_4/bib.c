@@ -187,24 +187,22 @@ void insereRemove(TipoListaSimples **primLista1,TipoListaSimples **primLista2){
 
 }
 void transplantaNo(TipoListaSimples **primLista1, TipoListaSimples **primLista2){
-	TipoListaSimples *aux = *primLista1,*aux2=*primLista2,*aux3;
+	TipoListaSimples **aux = primLista1,*aux2=*primLista2,*aux3;
 	if(*primLista2 == NULL) return;
-	if(*primLista1 != NULL)
-		while(aux -> prox != NULL) aux = aux -> prox;
+	while(*aux != NULL) aux = &(*aux)-> prox;
 	if(aux2 -> prox != NULL){
 		while(aux2 -> prox != NULL) aux2 = aux2 -> prox;
 		aux3 = aux2;
 		aux2 = *primLista2;
 		while(aux2 -> prox != aux3) aux2 = aux2 ->prox;
-		
 	}
 	else{
-		aux -> prox = aux2;
-		aux2 = NULL;
+		*aux = aux2;
+		*primLista2 = NULL;
 		return;
 	}
-	
-	aux -> prox = aux2 -> prox;
+
+	*aux = aux2 -> prox;
 	aux2 -> prox = NULL;
 
 }

@@ -73,18 +73,25 @@ int main(void) {
     imprimeLista(lista2);
 
     puts("transplantaNo");
-    transplantaNo(&lista, &lista2);
+    printf("lista\n");
     imprimeLista(lista);
+    printf("lista2\n");
+    imprimeLista(lista2);
+    printf("tlansplante\n");
+    transplantaNo(&lista, &lista2);
+    printf("lista\n");
+    imprimeLista(lista);
+    printf("lista2\n");
     imprimeLista(lista2);
 
     puts("contaNo()");
     printf("n = %d\n", contaNo(&lista));
 
     puts("alturaNo()");
-    printf("h = %d\n", alturaNo(&lista, 27));
+    printf("chave = 27 h = %d\n", alturaNo(&lista, 27));
 
     puts("profundidadeNo() //3");
-    printf("p = %d\n", profundidadeNo(&lista, 33));
+    printf("chave = 33 p = %d\n", profundidadeNo(&lista, 33));
     imprimeLista(lista);
 
     puts(" liberaNos()");
@@ -93,4 +100,3 @@ int main(void) {
 
     return 0;
 }
-

@@ -23,7 +23,7 @@ void menu(){
 	printf("Evite usar a lista 3, pois ela e usada nas funcoes que criam novas listas\n");
 
 	printf("(-1) para limpar o terminal.\n");
-	printf("(0) para imprimir a lista selecionada.\n");
+	printf("(0) para imprimir todas as listas.\n");
 	printf("(1) para inserir chave e valor no inicio da lista selecionada.\n");
 	printf("(2) para atualizar o primeiro valor da lista selecionada.\n");
 	printf("(3) para remover o primeiro no da lista selecionada.\n");
@@ -32,12 +32,13 @@ void menu(){
 	printf("(6) para remover o ultimo no da lista selecionada.\n");
 	printf("(7) para deletar um no, dado uma chave, na lista selecionada.\n");
 	printf("(8) para deletar a lista selecionada.\n");
-	printf("(9) para copiar a lista selecionada(evite usar a 3!!).\n");
+	printf("(9) para copiar a lista selecionada para a lista 3.\n");
 	printf("(10) para fazer a intersecao das listas 1 e 2.(destino lista 3)\n");
 	printf("(11) para remover o ultimo no da lista selecionada e adiciona-lo a lista 3\n");
 	printf("(12) para tlansplantar o ultimo no da lista selecionada e adiciona-lo ao final da lista 3\n");
 	printf("(13) para contar o numero de nos da lista selecionada.\n");
-	printf("(14) para calcula a altura de um no dado uma chave(a chave DEVE estar contida no no).\n");
+	printf("(14) para calcula a altura de um no, dado uma chave.\n");
+	printf("(15) para calcula a profundidade de um no, dado uma chave.\n");
 	printf("(42) para finalizar o programa.\n");
 
 }
@@ -73,7 +74,7 @@ int main(){
 		menu();
 		printf("Digite a opcao:");
 		scanf("%i",&a);
-		if(a >= 0 && a != 10){
+		if(a >= 0 && a != 10 && a != 0){
 			printf("Digite a lista desejada(1,2,3):");
 			scanf("%i",&b);
 		}
@@ -86,10 +87,13 @@ int main(){
 				system("clear");
 				break;
 			case 0:
-				printf("Lista %i:\n",b);
-				if(b == 1) printaov(no1);
-				else if(b == 2) printaov(no2);
-				else printaov(no3);
+				printf("Lista 1:\n");
+				printaov(no1);
+				printf("Lista 2:\n");
+				printaov(no2);
+				printf("Lista 3:\n");
+				printaov(no3);
+
 				break;
 
 			case 1:
@@ -193,6 +197,14 @@ int main(){
 				else if(b == 2) printf("Altura:%i\n",alturaNo(&no2,x));
 				else printf("Altura:%i\n",alturaNo(&no3,x));
 				break;
+
+			case 15:
+				x = lerv(1);
+				if(b == 1) printf("Profundidade:%i\n",profundidadeNo(&no1,x));
+				else if(b == 2) printf("Profundidade:%i\n",profundidadeNo(&no2,x));
+				else printf("Profundidade:%i\n",profundidadeNo(&no3,x));
+				break;
+
 			default:
 				break;
 		}
