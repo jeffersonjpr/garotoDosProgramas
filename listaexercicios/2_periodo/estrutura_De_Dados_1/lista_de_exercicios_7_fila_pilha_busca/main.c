@@ -4,9 +4,12 @@
 
 int main(){
     int i;
-    InicioFim *x;
-    x = (InicioFim*)malloc(sizeof(InicioFim));
-    if(x == NULL) return 0;
+    InicioFim *fila1,*pilha1;
+    //alocaçoes
+    fila1 = (InicioFim*)malloc(sizeof(InicioFim));
+    if(fila1 == NULL) return 0;
+    pilha1 = (InicioFim*)malloc(sizeof(InicioFim));
+    if()
     x -> inicio = x -> fim = NULL;
     for(i = 5; i >= 1; i--){
         InsereFila(x,i);

@@ -1,45 +1,43 @@
-// Cabecalho para a Lista de Exercicios de Fila e Pilha
-// Aleffer Rocha, 16 de outubro de 2018
 #include "lib.h"
 // Recebe como parametro de entrada uma fila ou pilha x
 // e cria um no cabeca em x.
 
-
+/*
+minha funçao cabeça nao deixa inserir quando a fila/pilha
+ nao esta vazia
+As funçoes de impressao, imprimem em uma linha;
+ */
 int Cabeca(InicioFim *x){
-    if(x == NULL) {
-        x = (InicioFim*)malloc(sizeof(InicioFim));
-        if(x == NULL) return -1;
-    }
-    else if(x -> inicio != NULL) return -1;
+    if(x == NULL) return 0;
+    if(x -> inicio != NULL) return 0;
     TipoCelula *aux;
     aux = (TipoCelula*)malloc(sizeof(TipoCelula));
-    if(aux == NULL) return -1;
+    if(aux == NULL) return 0;
     aux -> chave = -1;
     aux -> prox = NULL;
     x -> inicio = aux;
     x -> fim = aux;
     return 1;
 }
-
 // Recebe como parametro de entrada uma fila ou pilha x
 // e verifica se x esta vazia.
 int Vazia(InicioFim *x){
-    if(x == NULL) return 1;
-    if(x -> inicio == NULL) return 1;
+    if(x == NULL) return -1;
+    if(x -> inicio == NULL) return 2;
     if(x -> inicio -> prox == NULL) return 1;
-    return -1;
+    return 0;
 }
 
 // Recebe como parametro de entrada uma fila f e um inteiro k.
 // Insere um item na fila f com valor chave k.
 int InsereFila(InicioFim *f, int k){
-    if(f == NULL || f -> inicio == NULL || f -> fim == NULL){
+    if(f -> inicio == NULL || f -> fim == NULL){
         int x = Cabeca(f);
-        if(x != 1) return -1;
+        if(!x) return 0;
     }
     TipoCelula *aux;
     aux = (TipoCelula*)malloc(sizeof(TipoCelula));
-    if(aux == NULL) return -1;
+    if(aux == NULL) return 0;
     aux -> chave = k;
     aux -> prox = NULL;
     f -> fim -> prox = aux;
@@ -74,7 +72,20 @@ void ImprimeFila(InicioFim *f){
 
 // Recebe como parametro de entrada uma pilha p e um inteiro k.
 // Insere um item na pilha p com valor chave k.
-int InserePilha(InicioFim *p, int k);
+int InserePilha(InicioFim *p, int k){
+    if(p == NULL) return 0;
+    if(p -> inicio == NULL || p -> fim == NULL){
+        int xa = Cabeca(p);
+        if(!xa) return 0;
+    }
+    TipoCelula *aux = NULL;
+    aux = (TipoCelula*)malloc(sizeof(TipoCelula));
+    if(aux == NULL) return 0;
+    aux -> chave = k;
+    aux -> prox = p -> fim;
+    p -> fim = aux;
+    return 1;
+}
 
 // Recebe como parametro de entrada uma pilha p.
 // Remove um item da pilha p.
@@ -86,11 +97,21 @@ int FPVazia(InicioFim *f);
 
 // Recebe como parametro de entrada uma pilha p.
 // Imprime todos os elementos de p.
-void ImprimePilha(InicioFim *p);
+void ImprimePilha(InicioFim *p){
+    if(p == NULL) return;
+    if(p -> inicio == NULL || p -> fim == NULL) return;
+    TipoCelula *aux;
+    aux = p -> fim;
+    while(aux -> prox != NULL){
+        printf("%i ",aux -> chave);
+        aux = aux -> prox;
+    }
+    printf("\n");
+}
 
 // Lista de Exercicios de Fila e pilha
 
-// Exercicio 1
+// Exercicio 1 *
 InicioFim *ConcatenaPilha(InicioFim *f, InicioFim *g){
 
 }
@@ -110,7 +131,7 @@ InicioFim *ConcatenaPilhaFila(InicioFim *p, InicioFim *f){
 
 }
 
-// Exercicio 5
+// Exercicio 5 *
 int QuantidadeElementosFP(InicioFim *fp){
 
 }
@@ -120,12 +141,12 @@ InicioFim *FilaInversa(InicioFim *f){
 
 }
 
-// Exercicio 7
+// Exercicio 7 *
 InicioFim *PilhaInversa(InicioFim *p){
 
 }
 
-// Exercicio 8
+// Exercicio 8 *
 InicioFim *FilaImparPar(InicioFim *p){
 
 }
@@ -160,7 +181,7 @@ int buscaSequencial(int *v, int k, int ini, int fim){
 
 }
 
-// Exercicio 14-b
+// Exercicio 14-b *
 int buscaBinaria(int *v, int k, int ini, int fim){
 
 }
@@ -195,7 +216,7 @@ int buscaMaiorImpar(int *v, int n){
 
 }
 
-// Exercicio 15-g
+// Exercicio 15-g *
 int buscaMenorTrocaPrimeira(int *v, int n){
 
 }
