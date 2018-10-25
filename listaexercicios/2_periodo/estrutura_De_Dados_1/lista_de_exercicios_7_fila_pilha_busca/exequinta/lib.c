@@ -1,12 +1,11 @@
 #include "header-lpb.h"
 
 // Exercicio 1
-InicioFim *ConcatenaPilha(InicioFim *f, InicioFim *g);{
+InicioFim *ConcatenaPilha(InicioFim *f, InicioFim *g){
 	if(g -> inicio -> prox == NULL) return f;
-	if(f -> inicio -> prox == NULL) return g;
 	InicioFim *aux = f;
 	g -> fim -> prox = f -> inicio -> prox;
-	f -> inicio -> prox = g -> inicio -> prox; 
+	f -> inicio -> prox = g -> inicio -> prox;
 	free(g -> inicio);
 	free(g);
 	g = NULL;
@@ -23,7 +22,7 @@ int QuantidadeElementosFP(InicioFim *fp){
 
 // Exercicio 7
 InicioFim *PilhaInversa(InicioFim *p){
-	
+
 }
 
 // Exercicio 8
