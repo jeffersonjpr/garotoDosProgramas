@@ -24,15 +24,45 @@ typedef struct inicio_fim {
 
 // Recebe como parametro de entrada uma fila ou pilha x
 // e cria um no cabeca em x.
-int Cabeca(InicioFim *x);
+int Cabeca(InicioFim *x){
+    if(x == NULL) {
+        x = (InicioFim*)malloc(sizeof(InicioFim));
+        if(x == NULL) return -1;
+    }
+    else if(x -> inicio != NULL) return -1;
+    TipoCelula *aux;
+    aux = (TipoCelula*)malloc(sizeof(TipoCelula));
+    if(aux == NULL) return -1;
+    aux -> chave = -1;
+    aux -> prox = NULL;
+    x -> inicio = aux;
+    x -> fim = aux;
+    return 1;
+}
 
 // Recebe como parametro de entrada uma fila ou pilha x
 // e verifica se x esta vazia.
-int Vazia(InicioFim *x);
+int Vazia(InicioFim *x){
+    if(x == NULL) return 1;
+    if(x -> inicio == NULL) return 1;
+    if(x -> inicio -> prox == NULL) return 1;
+    return -1;
+}
 
 // Recebe como parametro de entrada uma fila f e um inteiro k.
 // Insere um item na fila f com valor chave k.
-int InsereFila(InicioFim *f, int k);
+int InsereFila(InicioFim *f, int k){
+    if(f == NULL) return -1;
+    if(f -> inicio == NULL || f -> fim == NULL) return -1;
+    TipoCelula *aux;
+    aux = (TipoCelula*)malloc(sizeof(TipoCelula));
+    if(aux == NULL) return -1;
+    aux -> chave = k;
+    aux -> prox = NULL;
+    f -> fim -> prox = aux;
+    f -> fim = aux;
+    return 1;
+}
 
 // Recebe como parametro de entrada uma fila f.
 // Remove um item da fila f.
@@ -71,7 +101,7 @@ InicioFim *ConcatenaPilha(InicioFim *f, InicioFim *g);
 InicioFim *ConcatenaFila(InicioFim *f, InicioFim *g);
 
 // Exercicio 3
-InicioFim *ConcatenaFilaPilha(InicioFim *f. InicioFim *p);
+InicioFim *ConcatenaFilaPilha(InicioFim *f, InicioFim *p);
 
 // Exercicio 4
 InicioFim *ConcatenaPilhaFila(InicioFim *p, InicioFim *f);
@@ -134,4 +164,3 @@ int buscaMenorTrocaPrimeira(int *v, int n);
 int buscaMaiorTrocaUltima(int *v, int n);
 
 #endif
-
