@@ -63,7 +63,7 @@ int FPVazia(InicioFim *f);
 void ImprimePilha(InicioFim *p);
 
 // Lista de Exercicios de Fila e pilha
-/*
+
 // Exercicio 1
 InicioFim *ConcatenaPilha(InicioFim *f, InicioFim *g);
 
@@ -132,5 +132,5 @@ int buscaMenorTrocaPrimeira(int *v, int n);
 
 // Exercicio 15-h
 int buscaMaiorTrocaUltima(int *v, int n);
-*/
+
 #endif
