@@ -25,8 +25,8 @@ int main(){
 	int a = 0,chave,valor;
 	aux = aux2 = NULL;
 	while(a < 15){
-		printf("1 insrir inicio\n");
-		printf("2 insrir fim\n");
+		printf("1 inserir inicio\n");
+		printf("2 inserir fim\n");
 		printf("3 remove no chave\n");
 		printf("4 copia lista\n");
 		printf("5 printar\n");

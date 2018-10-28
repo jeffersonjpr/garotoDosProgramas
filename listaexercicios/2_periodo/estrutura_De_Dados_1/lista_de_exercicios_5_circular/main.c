@@ -35,6 +35,8 @@ int main(){
 			insereInicioListaCircular(&aux,chave,valor);
 		}
 		if(n == 2){
+			printf("Digite a chave:");
+			scanf("%i",&chave);
 			removeNo(&aux,chave);
 		}
 		if(n == 3){
