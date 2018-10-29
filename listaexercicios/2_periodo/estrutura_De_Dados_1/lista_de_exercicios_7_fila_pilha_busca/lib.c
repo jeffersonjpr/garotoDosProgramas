@@ -7,6 +7,13 @@ minha funçao cabeça nao deixa inserir quando a fila/pilha
  nao esta vazia
 As funçoes de impressao, imprimem em uma linha;
  */
+int tavaziotachei(InicioFim *x){
+    if(x == NULL) return 0;
+    if(x -> inicio == NULL) return 0;
+    if(x -> inicio -> == x -> fim) return 0;
+    return 1;
+}
+
 int Cabeca(InicioFim *x){
     if(x == NULL) return 0;
     if(x -> inicio != NULL) return 0;
@@ -22,7 +29,7 @@ int Cabeca(InicioFim *x){
 // Recebe como parametro de entrada uma fila ou pilha x
 // e verifica se x esta vazia.
 int Vazia(InicioFim *x){
-    if(x == NULL) return -1;
+    if(x == NULL) return 0;
     if(x -> inicio == NULL) return 2;
     if(x -> inicio -> prox == NULL) return 1;
     return 0;
@@ -48,13 +55,17 @@ int InsereFila(InicioFim *f, int k){
 // Recebe como parametro de entrada uma fila f.
 // Remove um item da fila f.
 int RemoveFila(InicioFim *f){
-
+    if(!tavaziotachei(f)) return 0;
+    TipoCelula *aux = f -> inicio;
+    f -> inicio = f -> inicio -> prox;
+    free(aux);
+    return 1;
 }
 
 // Recebe como parametro de entrada uma fila f.
 // Remove todos os itens da fila f.
 int FFVazia(InicioFim *f){
-
+    
 }
 
 // Recebe como parametro de entrada uma fila f.
