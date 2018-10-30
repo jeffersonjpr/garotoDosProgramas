@@ -10,7 +10,7 @@ As funçoes de impressao, imprimem em uma linha;
 int tavaziotachei(InicioFim *x){
     if(x == NULL) return 0;
     if(x -> inicio == NULL) return 0;
-    if(x -> inicio -> == x -> fim) return 0;
+    if(x -> inicio == x -> fim) return 0;
     return 1;
 }
 
@@ -65,7 +65,7 @@ int RemoveFila(InicioFim *f){
 // Recebe como parametro de entrada uma fila f.
 // Remove todos os itens da fila f.
 int FFVazia(InicioFim *f){
-    
+
 }
 
 // Recebe como parametro de entrada uma fila f.
