@@ -14,7 +14,7 @@ def ta():
 
 
 
-def tempo(m):
+def tempo(m,xx,cont):
     sec = 0
     mino = 0
     hrs = 0
@@ -32,20 +32,26 @@ def tempo(m):
         os.system('cls')
         sec+=1
         m2 += 0.0166666667
-        print("Maximo em minutos:%.2f"%m)
-        print("%i:%i:%i" %(hrs,mino,sec))
+        if(xx == 1):
+            print("---Work Time---")
+        else:
+            print("---Rest Time---")
+        print("%iº round." % cont)
+        print("%.2i:%.2i:%.2i/%.2i:%.2i:00" %(hrs,mino,sec,m/60,m%60))
         time.sleep(1)
+    os.system('cls')
 while(True):
     tom = float(input("Digite quantos minutos de trabalho: "))
     pausa = float(input("Digite quantos minutos de pausa: "))
-    mi()
-    bg()
-    tempo(tom)
-    tm()
-    tempo(pausa)
-    mi()
-    bg()
-    tempo(tom)
-    tm()
-    tempo(pausa)
+    rounds = float(input("Digite a quantidade de Rounds: "))
+    cont = 1
+    """mi()"""
+    while(rounds > 0):
+        bg()
+        tempo(tom,1,cont)
+        tm()
+        tempo(pausa,0,cont)
+        tm()
+        rounds -= 1
+        cont += 1
     ta()
