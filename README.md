@@ -1,2 +1,3 @@
 # GarotoDosProgramas
-Random things from university and my mind
+Exercise repository.
+University and others.
