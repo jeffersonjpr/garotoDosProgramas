@@ -1,0 +1,75 @@
+.data
+.align 4
+
+string1: .asciiz "123 "
+string2: .asciiz "432\n"
+string3: .asciiz "983"
+
+new: .ascii "\n"
+.text
+	la $a0, string1
+	jal pegaIntAscii
+	
+	add $a0, $v0, $zero
+	li $v0, 1
+	syscall
+	
+	jal newline
+	
+	la $a0, string2
+	jal pegaIntAscii
+	
+	add $a0, $v0, $zero
+	li $v0, 1
+	syscall
+	
+	jal newline
+	
+	la $a0, string3
+	jal pegaIntAscii
+	
+	add $a0, $v0, $zero
+	li $v0, 1
+	syscall
+	
+	li $v0, 10
+	syscall
+	
+newline:
+	li $v0, 11
+	la $a0, new
+	syscall
+	jr $ra
+	
+#funcao pegaintascii $a0 = string finalizada por (null/espaço/retorno de carro) $v0 = numero inteiro
+pegaIntAscii:						#funcao que recebe uma string ascii (finalizado por null, espaço ou retorno de carro) e retorna em int
+	addi $t0, $zero, 1				# contador da volta
+	addi $t1, $zero, 1				# base 10 para multiplicação
+	add $v0, $zero, $zero				# retorno da funcao
+	pegaintloop:					
+		lb $t2, 1($a0)				# t2 recebe a proxima posiçao de a0
+		beq $t2, '\r', voltapegaint		#
+		beq $t2, '\n', voltapegaint		## comparaçoes de fim de texto
+		beq $t2, '\0', voltapegaint		#
+		beq $t2, ' ', voltapegaint		# espaço
+		
+		addi $a0, $a0, 1			# prox pos ponteiro string
+		addi $t0, $t0, 1			# incremento do contador de volta
+		j pegaintloop
+		
+	voltapegaint:
+		beq $t0, $zero, fimpegaint		# compara se o contador de volta é igual a zero
+		
+		lb $t3, 0($a0)				# t3 vai receber o valor da ascii 
+		addi $t4, $zero, -48			# 48 é o valor em ascii do caractere 0
+		add $t3, $t3, $t4			# t3 agora representa o valor corretamente na casa das unidades
+		
+		mul $t3, $t3, $t1			# t3 agora representa o valor na sua ordem correta
+		
+		add $v0, $v0, $t3			# somando ao resultado final
+		addi $a0, $a0, -1			# retornando com o ponteiro
+		addi $t0, $t0, -1			# decremento do contador de volta
+		mul $t1, $t1, 10			# incremento da ordem de t1
+		j voltapegaint
+	fimpegaint:
+		jr $ra

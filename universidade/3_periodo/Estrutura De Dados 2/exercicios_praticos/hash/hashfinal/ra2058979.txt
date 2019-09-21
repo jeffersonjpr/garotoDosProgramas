@@ -1,0 +1,12 @@
+Tamanho da tabela 1000003 (numero primo maior que 10^6)
+
+Quantidade de espaços vazios :367907
+Tamanho da maior lista :8
+indice 238262 | 2216244910 288239126 844240794 2331245255 1677243293 3237247973 2567245963 211238895
+Quantidade de listas sem colisoes: 367443
+Tamanho medio das listas :1.582046
+
+
+// COMENTARIOS //
+O "tamannho da maior lista" considera a primeira lista maior encontrada.
+O "tamanho medio das listas" nao considera as listas vazias.

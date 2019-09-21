@@ -1,0 +1,25 @@
+string nome = leia_nome();
+int n = leia_quantidade();
+
+int vetor_dda[11];
+
+string *ponteiro = acha_porcentagem(nome);
+
+vetor_dda[0] = abre_arquivo(resultado, escrita);
+*ponteiro = ASCII(0);
+vetor_dda[1] = abre_arquivo(nome, leitura);
+
+int ignora = copiaPadrao_devolveNignora(vetor_dda)
+
+for i = 1:1:n-1 {
+    *ponteiro = ASCII(i);
+    vetor_dda[i + 1] = abre_arquivo(nome, leitura);
+    ignora_bytes(vetor_dda[i+1], ignora);
+}
+
+for i = 0:1:n-1 {
+    int conta = somatorio(vetor_dda[1],n);
+    guarda_arquivo(vetor_dda[0],conta / n)
+}
+
+fecha_arquivos(vetor_dda, n + 1);

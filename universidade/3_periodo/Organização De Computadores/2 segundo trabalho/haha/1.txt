@@ -1,0 +1,13 @@
+Numero de thread 1
+Tamanho     2  Tempo 0.00014432
+Tamanho     4  Tempo 0.00011597
+Tamanho     8  Tempo 0.00008193
+Tamanho    16  Tempo 0.00006042
+Tamanho    32  Tempo 0.00025694
+Tamanho    64  Tempo 0.00176232
+Tamanho   128  Tempo 0.01548397
+Tamanho   256  Tempo 0.19296809
+Tamanho   512  Tempo 2.85892467
+Tamanho  1024  Tempo 23.67916263
+Numero de thread 1
+ 0.00017109  0.00007761  0.00003510  0.00005773  0.00024092  0.00198061  0.01469694  0.12881920  2.64459602  23.11476595  189.30605547  1527.55580614 

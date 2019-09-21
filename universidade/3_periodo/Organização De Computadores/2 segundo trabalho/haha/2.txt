@@ -1,0 +1,27 @@
+Numero de thread 2
+Tamanho     2  Tempo 0.00019914
+Tamanho     4  Tempo 0.00013270
+Tamanho     8  Tempo 0.00009715
+Tamanho    16  Tempo 0.00069082
+Tamanho    32  Tempo 0.00046746
+Tamanho    64  Tempo 0.00201329
+Tamanho   128  Tempo 0.00912496
+Tamanho   256  Tempo 0.12168513
+Tamanho   512  Tempo 1.35603743
+Numero de thread 2
+Tamanho     2  Tempo 0.00020238
+Tamanho     4  Tempo 0.00023968
+Tamanho     8  Tempo 0.00025375
+Tamanho    16  Tempo 0.00040684
+Tamanho    32  Tempo 0.00016979
+Tamanho    64  Tempo 0.00124373
+Tamanho   128  Tempo 0.00742330
+Tamanho   256  Tempo 0.06504210
+Tamanho   512  Tempo 0.65994456
+Tamanho  1024  Tempo 10.61978751
+Tamanho  2048  Tempo 93.47046594
+Tamanho  4096  Tempo 812.20754040
+Numero de thread 2
+ 0.00016731  0.00008705  0.00007808  0.00006432  0.00014084  0.00091258  0.00704813  0.06550361  1.38291880  12.08486081  99.48565284  799.15594479 
+Numero de thread 2
+ 0.00020938  0.00009325  0.00005066  0.00006378  0.00015564  0.00111707  0.00733998  0.06567880  0.76056733 
