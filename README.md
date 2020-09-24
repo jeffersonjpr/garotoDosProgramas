@@ -2,8 +2,7 @@
 
 <div align="center">
 
-[![HitCount](http://hits.dwyl.com/jeffersonjpr/
-garotoDosProgramas.svg)](http://hits.dwyl.com/jeffersonjpr/garotoDosProgramas)  
+[![HitCount](http://hits.dwyl.com/jeffersonjpr/garotoDosProgramas.svg)](http://hits.dwyl.com/jeffersonjpr/garotoDosProgramas)  
 
 </div>
 
